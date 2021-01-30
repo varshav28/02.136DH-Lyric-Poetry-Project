@@ -1,0 +1,33 @@
+{%extends 'base.html' %}
+{% block content %}
+        <div class="container">
+            <div class="row text-center">
+                <div class="col">
+                    <form method="POST" id="Text1" action="save-text-1/">
+                        {% csrf_token %}
+                        <label for="Original-text" style="margin-top: 20px;" ><h2>Version 1</h2></label>
+                        <textarea class="form-control" name="Original-text" id="otext" rows="18" cols="6">{{ default_original_text }}</textarea>
+                        <button type="submit" class="btn btn-outline-primary" style="margin-top: 20px;" >Submit</button>
+                        <button type="button" class=" btn btn-outline-danger" id="clear1" style="margin-top: 20px;" >Clear</button>
+                        </form>
+                </div>
+                <div class="col">
+                    <form method="POST" id="Text2" action="save-text-2/">
+                        {% csrf_token %}
+                        <label for="User-text" style="margin-top: 20px;"><h2>Version 2</h2></label>
+                        <textarea class="form-control" name="User-text" id="utext" rows="18" cols="6">{{ default_user_text }}</textarea>
+                        <button type="submit" class="btn btn-outline-primary" style="margin-top: 20px;" >Submit</button>
+                        <button type="button" class="btn btn-outline-danger" id="clear2" style="margin-top: 20px;">Clear</button>
+                        </form>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-lg-12">
+                    <form method='POST' action="report/">
+                        {% csrf_token %}
+                        <button type="submit" class=" btn btn-lg btn-success">Compare</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+{% endblock content %}
